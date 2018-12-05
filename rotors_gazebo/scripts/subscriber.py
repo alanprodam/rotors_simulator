@@ -14,7 +14,6 @@ def talker():
 		rate.sleep()
 
 if __name__ == '__main__':
-	try:
-		talker()
-	except rospy.ROSInterruptException:
-		pass
+
+	rospy.init_node('image_listener', anonymous=True)
+

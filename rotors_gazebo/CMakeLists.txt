@@ -27,6 +27,39 @@ if(${gazebo_VERSION_MAJOR} GREATER 2)
     set(enable_wind "false")
     set(rotors_description_dir "${CMAKE_CURRENT_SOURCE_DIR}/models/rotors_description")
     set(scripts_dir "${CMAKE_CURRENT_SOURCE_DIR}/scripts")
+
+    	set(sources
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/cameraparameters.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/cvdrawingutils.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/dictionary.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/ippe.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/marker.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markerdetector.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markerlabeler.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markermap.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/posetracker.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markerlabelers/dictionary_based.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/debug.cpp
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markerlabelers/svmmarkers.cpp)
+
+    	set(headers
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/aruco_export.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/cameraparameters.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/cvdrawingutils.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/dictionary.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/ippe.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/marker.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markerdetector.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markerlabeler.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markermap.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/posetracker.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markerlabelers/dictionary_based.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/timers.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/debug.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/aruco.h
+	    ${CMAKE_CURRENT_SOURCE_DIR}/src/markerlabelers/svmmarkers.h)
+
+    add_library(aruco ${sources} ${headers})
     
     # Creates shell commands to generate .sdf file
     add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/models/iris/iris.sdf
